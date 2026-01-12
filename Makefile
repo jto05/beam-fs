@@ -1,7 +1,7 @@
 SERVER_EXECUTABLE=beam_s
 CLIENT_EXECUTABLE=beam_c
 BIN_PATH=build/bin
-TMUX_SESSION=beam-fs
+TMUX_SESSION=beam-fs-running
 
 .PHONY: build run-server run-client
 
