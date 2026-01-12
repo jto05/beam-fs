@@ -10,9 +10,9 @@ build:
 	go build -o $(BIN_PATH)/$(CLIENT_EXECUTABLE)  cmd/beam_client/main.go 
 
 run:
-	tmux new-session -d -s $(TMUX_SESSION) 'make run-server'
-	tmux split-window -h $(TMUX_SESSION) 'make run-client' 
-	tmux attach -t $(TMUX_SESSION)
+	tmux new-session -d -s $(TMUX_SESSION) 'make run-server' \; \
+		split-window -h -t $(TMUX_SESSION):0 'make run-client'  \; \
+		attach -t $(TMUX_SESSION)
 
 
 run-server:
