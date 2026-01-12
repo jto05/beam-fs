@@ -10,4 +10,6 @@ import (
 
 func main() {
 	fmt.Println("This is the client")
+	for {
+	}
 }
