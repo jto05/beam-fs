@@ -22,6 +22,7 @@ var commands = []*Command{
 		Name:  "ls",
 		Usage: "ls [path]",
 		Short: "List remote files",
+		Run:   runLS,
 		// TODO: write runLS()
 	},
 
@@ -29,29 +30,49 @@ var commands = []*Command{
 		Name:  "get",
 		Usage: "get [filepath]",
 		Short: "Get file at remote file path",
-		// TODO: write runGET()
+		Run:   runGET,
 	},
 
 	{
 		Name:  "put",
 		Usage: "put [local filepath] [remote filepath]",
 		Short: "Put local file into remote dir",
-		// TODO: write runPUT()
+		Run:   runPUT,
 	},
 
 	{
 		Name:  "cd",
 		Usage: "cd [path]",
 		Short: "Change remote directory",
-		// TODO: write runCD()
+		Run:   runCD,
 	},
 
 	{
 		Name:  "exit",
 		Usage: "exit",
 		Short: "Exit remote",
-		// TODO: write runEXIT()
+		Run:   runEXIT,
 	},
+}
+
+func runLS(s *Session, args []string) error {
+	return nil
+}
+
+func runCD(s *Session, args []string) error {
+	return nil
+}
+
+func runGET(s *Session, args []string) error {
+	return nil
+}
+
+func runPUT(s *Session, args []string) error {
+	return nil
+}
+
+func runEXIT(s *Session, args []string) error {
+	return nil
 }
 
 func parseArgs(name string, args []string) ([]string, error) {
@@ -74,8 +95,10 @@ func parseArgs(name string, args []string) ([]string, error) {
 
 func ParseCommand(s *Session, line string) (Command, error) {
 	splitLine := strings.Split(line, " ")
+	cmd_name := splitLine[0]
 
-	args, err := parseArgs(cmd, splitLine[0:])
+	// TODO: handle arguments
+	_, err := parseArgs(cmd_name, splitLine[0:])
 	if err != nil {
 		return Command{}, nil
 	}
