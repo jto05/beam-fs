@@ -23,7 +23,6 @@ var commands = []*Command{
 		Usage: "ls [path]",
 		Short: "List remote files",
 		Run:   runLS,
-		// TODO: write runLS()
 	},
 
 	{
