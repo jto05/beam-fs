@@ -32,19 +32,21 @@ func (ui *UserInterface) Prompt() (string, error) {
 	// display pronpt
 	_, err := ui.writer.WriteString(prompt)
 	if err != nil {
-		return err
+		return "", err
 	}
+
+	ui.writer.Flush()
 
 	// get input
 	line = ui.getInput()
 	fmt.Fprintf(ui.writer, "you wrote: %s\n", line)
-	return line
+	return line, nil
 }
 
 func (ui *UserInterface) getInput() string {
-	if !ui.scanner.Scan() {
-		return ""
+	if ui.scanner.Scan() {
+		input := ui.scanner.Text()
+		return input
 	}
-	input := ui.scanner.Text()
-	return input
+	return ""
 }

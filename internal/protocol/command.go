@@ -54,25 +54,6 @@ var commands = []*Command{
 	},
 }
 
-func runLS(s *Session, args []string) error {
-	return nil
-}
-
-func runCD(s *Session, args []string) error {
-	return nil
-}
-
-func runGET(s *Session, args []string) error {
-	return nil
-}
-
-func runPUT(s *Session, args []string) error {
-	return nil
-}
-
-func runEXIT(s *Session, args []string) error {
-	return nil
-}
 
 func parseArgs(name string, args []string) ([]string, error) {
 	var validName bool
@@ -104,3 +85,4 @@ func ParseCommand(s *Session, line string) (Command, error) {
 
 	return Command{}, nil
 }
+

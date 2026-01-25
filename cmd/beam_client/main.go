@@ -6,8 +6,11 @@ package main
 
 import (
 	"fmt"
+
+	"beam-fs/internal/client"
 )
 
 func main() {
-	fmt.Println("This is the client")
+	fmt.Println("Running client...")
+	client.Start()
 }

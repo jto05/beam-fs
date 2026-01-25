@@ -1,17 +1,26 @@
 package client
 
 import (
-	"fmt"
+	"log"
+	"os"
 
 	"beam-fs/internal/session"
 )
 
 func Start() {
-	s := session.Session{}
+	host := "localhost"
+	port := "3000"
+	in := os.Stdin
+	out := os.Stdout
 
-	ui := NewUserInterface(s * session.Session)
+	s := session.NewSession(host, port, in, out)
+
+	ui := NewUserInterface(&s)
 
 	for {
-		fmt.Fprintf(ui.writer, "you wrote: %s\n", line)
+		_, err := ui.Prompt()
+		if err != nil {
+			log.Println(err)
+		}
 	}
 }
